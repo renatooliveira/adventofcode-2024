@@ -67,7 +67,6 @@ fn get_total_safe_levels(levels: &Vec<&str>) -> i32 {
                     break;
                 }
             }
-
         }
     }
     return total_safe;

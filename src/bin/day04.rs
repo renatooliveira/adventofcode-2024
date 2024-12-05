@@ -17,12 +17,10 @@ fn count_horizontal(matrix: &Vec<Vec<char>>) -> i32 {
 fn count_vertical(matrix: &Vec<Vec<char>>) -> i32 {
     let mut count = 0;
 
-
     for (line, l) in matrix.iter().enumerate() {
         for (column, c) in l.iter().enumerate() {
             if line < l.len() - 3 {
                 if *c == 'X' {
-
                     if matrix[line + 1][column] == 'M' {
                         if matrix[line + 2][column] == 'A' {
                             if matrix[line + 3][column] == 'S' {
@@ -120,7 +118,14 @@ fn count_xmas(matrix: &Vec<Vec<char>>) -> i32 {
             if line > 0 && line < l.len() - 1 {
                 if column > 0 && column < matrix.len() - 1 {
                     if *c == 'A' {
-                        let s: String = [matrix[line - 1][column - 1], matrix[line - 1][column + 1], matrix[line + 1][column - 1], matrix[line + 1][column + 1]].iter().collect();
+                        let s: String = [
+                            matrix[line - 1][column - 1],
+                            matrix[line - 1][column + 1],
+                            matrix[line + 1][column - 1],
+                            matrix[line + 1][column + 1],
+                        ]
+                        .iter()
+                        .collect();
 
                         let possibilities = vec!["MSMS", "MMSS", "SSMM", "SMSM"];
 
@@ -133,12 +138,10 @@ fn count_xmas(matrix: &Vec<Vec<char>>) -> i32 {
         }
     }
 
-
     return count;
-
 }
 
-fn main () {
+fn main() {
     let input = read_to_string("src/input/day04.txt").expect("Please add the input file");
     let matrix: Vec<Vec<char>> = input.lines().map(|line| line.chars().collect()).collect();
 
